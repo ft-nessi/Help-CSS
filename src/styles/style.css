@@ -1,0 +1,156 @@
+/* general stylings */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Balsamiq Sans", cursive;
+}
+
+#background-page {
+  position: relative;
+}
+
+.bg-image-container {
+  background-image: url("/images/Bg-boxes.png");
+  background-color: rgb(208, 220, 227);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#start-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.start-image {
+  position: absolute;
+  width: auto;
+  height: 100vh;
+  z-index: 0.1;
+}
+
+.contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  z-index: 10;
+  flex-direction: column;
+}
+
+.contents > div {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contents > .header {
+  height: 22%;
+  align-items: flex-end;
+}
+
+#start-page h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 10vh;
+  line-height: 7vh;
+  color: rgb(16, 61, 102);
+}
+
+#boxes {
+    height: 30%;
+    align-items: flex-end;
+}
+
+.image-boxes {
+    height: 12vh;
+}
+
+#right-and-wrong {
+    height: 3%;
+    align-items: flex-end;
+    font-size: 1.5vh;
+    line-height: 0.1vh;
+    color: rgb(16, 61, 102);
+
+}
+
+#space-between-r-w {
+    width: 4vw
+}
+
+#instruction  {
+    height: 14%;
+    align-items: flex-end;
+    font-size: 1.4vh;
+    line-height: 3vh;
+    color: rgb(16, 61, 102);
+}
+
+.button {
+    height: 7%;
+    align-items: flex-end;
+}
+
+
+.face {
+    height: 26.2% ;
+    align-items: flex-end;
+    
+}
+
+#start-button {
+    height: 4.3%;
+    border: 0.5vh solid rgb(16, 61, 102);
+    background-color: rgb(130, 179, 208);
+    padding: 1vh 1vh 3.5vh 1vh;
+    font-family:"Balsamiq Sans", cursive;
+    font-size: 2.5vh;
+    text-align:center;
+    color: rgb(16, 61, 102);
+}
+
+#start-button:hover {
+    border: 0.5vh solid rgb(237, 37, 78);
+    background-color: rgb(255, 123, 150);
+    color: rgb(237, 37, 78);
+}
+
+#start-button:active {
+    border: 0.5vh solid rgb(237, 37, 78);
+    background-color: rgb(255, 123, 150);
+    color: rgb(237, 37, 78);
+    transform: translateY(1vh);
+}
+
+.face-heart {
+    height: 10vh;
+    padding-bottom: 9vh;
+    padding-left: 3vh;
+}
+
+/* style of the game-page starts here */
+
+#game-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}

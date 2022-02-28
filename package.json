@@ -1,0 +1,9 @@
+{
+    "name": "help-css",
+    "scripts": {
+        "serve": "serve src"
+    },
+    "dependencies": {
+        "serve": "^13.0.2"
+    }
+}
