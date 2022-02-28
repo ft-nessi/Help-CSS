@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <!-- Link for the file style.css -->
     <link rel="stylesheet" href="/styles/style.css">
-    
+
     <title>HELP! CSS</title>
     <!-- BONUS: Add a logo of a blue box in th Title-->
 </head>
@@ -22,7 +22,7 @@
         <div class="bg-image-container"></div>
 
         <!-- Here starts the "start page" -->
-        <div id="start-page">
+        <div  class="hidden" id="start-page">
             <img class="start-image" src="/images/First-page-bg.png"
                 alt="Blue starter page picture with the Title 'Clara S. Smith'.">
             <div class="contents">
@@ -30,7 +30,8 @@
                     <h1>HELP !</h1>
                 </div>
                 <div id="boxes">
-                    <img class="image-boxes" src="/images/Blocks-first-page.png" alt="Pictures of right and wrong boxes.">
+                    <img class="image-boxes" src="/images/Blocks-first-page.png"
+                        alt="Pictures of right and wrong boxes.">
                 </div>
                 <div id="right-and-wrong">
                     <h2>RIGHT</h2>
@@ -39,8 +40,8 @@
                 </div>
                 <div id="instruction">
                     <h3>LEFT ARROW = WALK LEFT <br>
-                    RIGHT ARROW = WALK RIGHT<br>
-                    UP ARROW = JUMP / SELECT</h3>
+                        RIGHT ARROW = WALK RIGHT<br>
+                        UP ARROW = JUMP / SELECT</h3>
                 </div>
                 <div class="button">
                     <button type="button" id="start-button">START GAME !</button>
@@ -56,24 +57,81 @@
 
 
         <!-- Here starts the "game page" -->
-        <div id="game-page">
-            <!-- <img class="start-image" src="/src/images/Bg-Game.png"
-            alt="Blue background"> -->
-        <!-- <div class="contents">
-            
-        </div> -->
-    </div>
+        <div class="hidden" id="game-page">
+            <img class="start-image" src="/images/Bg-Game.png" alt="Blue background">
+            <div class="contents">
+                <div class="question-field">
+                    <h2 class="header">Can you find the right solution?</h2>
+                </div>
+                <div id="monitor">
+                    <img class="image-monitor1" src="/images/monitor-drawing.png" alt="Drawing of the monitor">
+                </div>
+                <div id="clara-game">
+                    <img class="image-sad-clara" src="/images/Clara_sad.png" alt="Clara with a sad expression">
+                    <img class="image-stunned-clara hidden" src="/images/Clara_slowly_understanding.png"
+                        alt="Clara with a stunned expression">
+                    <img class="image-happy-clara hidden" src="/images/Clara_slowly_understanding.png"
+                        alt="Clara with a happy expression">
+                    <div class="status-and-score">
+                        <div class="status">
+                            <h2 class="sad-status hidden">"Mhhh... I still don't understand it."</h2>
+                            <h2 class="stunned-status hidden">"Ohhhhhhhh... That's how it works!"</h2>
+                            <h2 class="happy-status">"Now I get it! <br> I think CSS is my best friend now!"</h2>
+                        </div>
 
+                        <div class="total-points">
+                            <h2> Total points: <span>0</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr>
+                <div class="canvas-field">
+                    <div class="canvas-container"></div>
+                </div>
+
+            </div>
         </div>
 
+    </div>
 
 
 
 
-        <!-- Here starts the "game page" -->
-        <div id="game-over-page"></div>
+    <!-- Here starts the "game over page" -->
+    <div id="game-over-page"></div>
+    <div  id="start-page">
+        <img class="start-image" src="/images/Bg-game-over.png"
+            alt="Blue starter page picture.">
+        <div class="contents">
+            <div class="header-game-over">
+                <h1>GAME OVER!</h1>
+            </div>
+            <div class="score-text">
+                <h2>YOUR TOTAL POINTS ARE: <br> <span>0</span></h2>
+            </div>
+            <div class="clara-status">
+                <h3>CLARA'S FINAL STATUS WAS:<br> <br>
+                <span>Now I get it! <br> I think CSS is my best friend now!"</span></h3>
+            </div>
+            <div class="boxes">
+                <img class="image-boxes" src="/images/Blocks-first-page.png" alt="Pictures of right and wrong boxes.">
+            </div>
+            <div class="question-game-over">
+                <h2>CAN YOU MAKE CSS <br> CLARA'S BEST FRIEND?</h2>
+            </div>
+            <div class="button">
+                <button type="button" id="try-again-button">TRY AGAIN !</button>
+            </div>
+            <div class="face">
+                <img class="face-heart" src="/images/Clara_heart.png" alt="Happy Clara waving.">
+            </div>
+        </div>
+    </div>
 
     </div>
+
 
 
 

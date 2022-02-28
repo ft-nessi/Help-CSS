@@ -71,75 +71,72 @@ body {
 }
 
 #boxes {
-    height: 30%;
-    align-items: flex-end;
+  height: 30%;
+  align-items: flex-end;
 }
 
 .image-boxes {
-    height: 12vh;
+  height: 12vh;
 }
 
 #right-and-wrong {
-    height: 3%;
-    align-items: flex-end;
-    font-size: 1.5vh;
-    line-height: 0.1vh;
-    color: rgb(16, 61, 102);
-
+  height: 3%;
+  align-items: flex-end;
+  font-size: 1.5vh;
+  line-height: 0.1vh;
+  color: rgb(16, 61, 102);
 }
 
 #space-between-r-w {
-    width: 4vw
+  width: 4vw;
 }
 
-#instruction  {
-    height: 14%;
-    align-items: flex-end;
-    font-size: 1.4vh;
-    line-height: 3vh;
-    color: rgb(16, 61, 102);
+#instruction {
+  height: 14%;
+  align-items: flex-end;
+  font-size: 1.4vh;
+  line-height: 3vh;
+  color: rgb(16, 61, 102);
 }
 
 .button {
-    height: 7%;
-    align-items: flex-end;
+  height: 7%;
+  align-items: flex-end;
 }
 
-
 .face {
-    height: 26.2% ;
-    align-items: flex-end;
-    
+  height: 26.2%;
+  align-items: flex-end;
 }
 
 #start-button {
-    height: 4.3%;
-    border: 0.5vh solid rgb(16, 61, 102);
-    background-color: rgb(130, 179, 208);
-    padding: 1vh 1vh 3.5vh 1vh;
-    font-family:"Balsamiq Sans", cursive;
-    font-size: 2.5vh;
-    text-align:center;
-    color: rgb(16, 61, 102);
+  height: 4.3%;
+  border: 0.5vh solid rgb(16, 61, 102);
+  background-color: rgb(130, 179, 208);
+  padding: 1vh 1vh 3.5vh 1vh;
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 2.5vh;
+  text-align: center;
+  color: rgb(16, 61, 102);
 }
 
 #start-button:hover {
-    border: 0.5vh solid rgb(237, 37, 78);
-    background-color: rgb(255, 123, 150);
-    color: rgb(237, 37, 78);
+  border: 0.5vh solid rgb(237, 37, 78);
+  background-color: rgb(255, 123, 150);
+  color: rgb(237, 37, 78);
 }
 
 #start-button:active {
-    border: 0.5vh solid rgb(237, 37, 78);
-    background-color: rgb(255, 123, 150);
-    color: rgb(237, 37, 78);
-    transform: translateY(1vh);
+  border: 0.5vh solid rgb(237, 37, 78);
+  background-color: rgb(255, 123, 150);
+  color: rgb(237, 37, 78);
+  transform: translateY(1vh);
 }
 
 .face-heart {
-    height: 10vh;
-    padding-bottom: 9vh;
-    padding-left: 3vh;
+  height: 10vh;
+  padding-bottom: 9vh;
+  padding-left: 3vh;
 }
 
 /* style of the game-page starts here */
@@ -153,4 +150,159 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: center;
+}
+.question-field {
+  height: 10vh;
+  align-items: center;
+}
+
+.question-field .header {
+  height: 3vh;
+  align-items: center;
+  font-size: 3vh;
+  line-height: 0.1vh;
+  color: rgb(36, 53, 65);
+  padding-top: 8vh;
+}
+
+#monitor {
+  height: 40vh;
+  align-items: baseline;
+}
+
+.image-monitor1 {
+  height: 25vh;
+  padding-left: 16vh;
+  padding-top: 2vh;
+}
+
+#clara-game {
+  height: 3vh;
+  align-items: flex-end;
+  padding: 0;
+}
+
+.image-sad-clara {
+  height: 20vh;
+  align-self: flex-end;
+  padding-top: 10vh;
+  padding-right: 2vh;
+}
+
+.status-and-score {
+  align-items: flex-start;
+}
+
+.status-and-score .status > h2 {
+  align-self: flex-start;
+  font-size: 2.5vh;
+  line-height: 3vh;
+  color: rgb(36, 53, 65);
+  padding-bottom: 1vh;
+  padding-right: 4vh;
+}
+
+.status-and-score .total-points > h2 {
+  font-size: 3vh;
+  line-height: 0.1vh;
+  color: rgb(237, 37, 78);
+  padding-right: 4vh;
+  padding-bottom: 1vh;
+}
+
+hr {
+  width: 61vh;
+  border: 0.5vh solid rgb(36, 53, 65);
+}
+
+.canvas-field {
+  height: 50vh;
+}
+
+/* The Style of the game over page starts here */
+
+.header-game-over {
+  height: 22.6%;
+  align-items: flex-end;
+}
+
+.header-game-over > h1 {
+  font-size: 7vh !important;
+}
+
+.score-text {
+  height: 15%;
+}
+
+.score-text > h2 {
+  font-size: 3vh;
+  align-self: flex-end;
+  color: rgb(16, 61, 102);
+  margin: 0;
+  padding: 1vh;
+}
+
+.clara-status {
+  height: 13%;
+  align-items: flex-end;
+}
+
+.clara-status > h3 {
+  font-size: 2vh;
+  color: rgb(16, 61, 102);
+}
+
+.clara-status > h3 > span {
+  color: rgb(237, 37, 78);
+}
+
+.boxes {
+  height: 9%;
+  align-items: flex-end;
+}
+
+.boxes .image-boxes {
+  height: 8vh;
+}
+
+.question-game-over {
+  height: 9%;
+  align-items: flex-end;
+}
+
+.question-game-over > h2 {
+  font-size: 3vh;
+  color: rgb(16, 61, 102);
+  line-height: 3vh;
+  margin: 0;
+  padding: 1vh
+}
+
+#try-again-button {
+  height: 4.3%;
+  border: 0.5vh solid rgb(16, 61, 102);
+  background-color: rgb(130, 179, 208);
+  padding: 1vh 1vh 3.5vh 1vh;
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 2.5vh;
+  text-align: center;
+  color: rgb(16, 61, 102);
+}
+
+#try-again-button:hover {
+  border: 0.5vh solid rgb(237, 37, 78);
+  background-color: rgb(255, 123, 150);
+  color: rgb(237, 37, 78);
+}
+
+#try-again-button:active {
+  border: 0.5vh solid rgb(237, 37, 78);
+  background-color: rgb(255, 123, 150);
+  color: rgb(237, 37, 78);
+  transform: translateY(1vh);
+}
+
+/* class to hide the oages which should not be shown */
+.hidden {
+  display: none !important;
 }
