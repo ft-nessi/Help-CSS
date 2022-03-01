@@ -8,6 +8,8 @@ let ground;
 let neutralB;
 let rightB;
 let wrongB;
+let flashS;
+let flashR;
 
 // Basis functions
 function hidePage(name) {
@@ -130,75 +132,115 @@ let neutralBox1 = new NeutralBox(1, 0.06 * canvasParent.clientWidth, 3)
 let neutralBox2 = new NeutralBox(2, 0.045 * canvasParent.clientWidth, 3)
 let neutralBox3 = new NeutralBox(3, 0.025 * canvasParent.clientWidth, 3)
 
-// class Player {
-//   constructor()
+class Player {
+  constructor() {
+    this.speedX = 0;
+    this.speedY = 0;
+    this.acceleration = 0.3;
+  }
 
-//   get x1() {
-//     return 0
-//   }
+  get x1() {
+    return 0
+  }
 
-//   get y1() {
-//   return canvasParent.clientHeight - groundStone1.height - canvasParent.clientHeight/6;
-//   }
+  get y1() {
+  return (canvasParent.clientHeight - groundStone1.height) - (canvasParent.clientHeight/3) ;
+  }
   
-//   get x2() {
-//     return canvasParent.clientWidth / 10
-//   }
+  get x2() {
+    return canvasParent.clientWidth / 10
+  }
 
-//   get y2() {
-//     return canvasParent.clientHeight - groundStone1.height
-//   }
+  get y2() {
+    return canvasParent.clientHeight - groundStone1.height
+  }
 
-//   isInCanvas() {
-//     let turnRight;
-//     let turnLeft
-//     this.x1 += 10;
+  get width() {
+    return this.x2 - this.x1;
+  }
 
-//     if (this.x2 <= canvasParent.clientWidth) {
-//       this.x1 -= 10;
-//       turnRight = true;
-//     } else {
-//       this.x1 -= 10;
-//       turnRight = false;
-//     }
+  get height() {
+    return this.y2 - this.y1;
+  }
 
-//     this.x1 -= 10;
+  draw() {
+    image(flashS, this.x1, this.y1, this.width, this.height);
+  }
 
-//     if (this.x1 >= 0) {
-//       this.x1 += 10;
-//       turnLeft = true;
-//     } else {
-//       this.x1 += 10;
-//       turnLeft = false;
-//     }
+  // isInCanvas() {
+  //   let turnRight;
+  //   let turnLeft
+  //   this.x1 += 10;
 
-//     return turnLeft && turnRight ? true : false;
-//   }
+  //   if (this.x2 <= canvasParent.clientWidth) {
+  //     this.x1 -= 10;
+  //     turnRight = true;
+  //   } else {
+  //     this.x1 -= 10;
+  //     turnRight = false;
+  //   }
 
-//   isOnGround() {
+  //   this.x1 -= 10;
 
+  //   if (this.x1 >= 0) {
+  //     this.x1 += 10;
+  //     turnLeft = true;
+  //   } else {
+  //     this.x1 += 10;
+  //     turnLeft = false;
+  //   }
 
+  //   return turnLeft && turnRight ? true : false;
+  // }
 
-//   }
+  // isOnGround() {
+    
+  //   this.y2 += 10
+
+  //   if(this.y2 === groundStone1.y1) {
+  //     this.y2 -= 10;
+  //     return true;
+  //   } else false;
+
+  // }
+
+  // isCollidingBox() {
+
+  //   this.y1 += 10
+
+  //   if(this.y1 <= neutralBox1.y1) {
+  //     this.y1 -=10;
+  //     return true
+  //   } else false
+  // }
 
 //   move() {
 
-//     if (this.isInCanvas()) {
-
-//       function keyPressed() {
-//         if (keyCode === LEFT_ARROW) {
-//           this.x1 -= 10;
-//         } else if (keyCode === RIGHT_ARROW) {
-//           this.x1 += 10;   
-//         } else if (keyCode === UP_ARROW || keyCode === 32) {
-//           this.y2 += 200;   
-//         }
+//     if (this.isInCanvas() && keyIsDown(LEFT_ARROW)) {
+//       this.speedX -= this.acceleration;
 //     }
-//     return keyPressed();
+//     if (keyIsDown(RIGHT_ARROW)) {
+//       this.speedX += this.acceleration;
+//     }
+//     if (keyIsDown(UP_ARROW)) {
+//       this.speedY -= this.acceleration;
+//     }
+//     if (keyIsDown(DOWN_ARROW)) {
+//       this.speedY += this.acceleration;
+//     }
+//   function keyPressed() {
+//     if ( && keyCode === LEFT_ARROW) {
+//           this.x1 -= 10;
+//     } else if (this.isInCanvas() && keyCode === RIGHT_ARROW) {
+//           this.x1 += 10;   
+//     } else if (this.isOnGround() && (keyCode === UP_ARROW || keyCode === 32)) {
+//           this.y2 += 200;   
+//     }
 //   }
+//     return keyPressed();
+}
 
-
-// }
+let flash = new Player();
 
 window.onresize = () => {
   windowResized;
@@ -221,6 +263,9 @@ function draw() {
   neutralBox1.draw();
   neutralBox2.draw();
   neutralBox3.draw();
+
+  flash.draw();
+
 }
 
 //Here are "EventListener"
