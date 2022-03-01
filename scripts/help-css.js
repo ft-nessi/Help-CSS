@@ -100,11 +100,23 @@ class Box {
   }
 
   get x1() {
-    return 0 + (canvasParent.clientWidth / this.totalBoxesInRow) * (this.order - 1) + this.spaceLeft;
+    return (
+      0 +
+      (canvasParent.clientWidth / this.totalBoxesInRow) * (this.order - 1) +
+      this.spaceLeft
+    );
   }
 
   get y1() {
     return canvasParent.clientHeight / 10;
+  }
+
+  get y2() {
+    return this.y1 - this.height;
+  }
+
+  get x2() {
+    return this.x1 + this.width;
   }
 
   get width() {
@@ -114,13 +126,12 @@ class Box {
   get height() {
     return canvasParent.clientHeight / 5;
   }
-
 }
 
 class NeutralBox extends Box {
   constructor(order, spaceLeft, totalBoxesInRow) {
     super(order, spaceLeft, totalBoxesInRow);
-    this.image
+    this.image;
   }
 
   draw() {
@@ -128,31 +139,40 @@ class NeutralBox extends Box {
   }
 }
 
-let neutralBox1 = new NeutralBox(1, 0.06 * canvasParent.clientWidth, 3)
-let neutralBox2 = new NeutralBox(2, 0.045 * canvasParent.clientWidth, 3)
-let neutralBox3 = new NeutralBox(3, 0.025 * canvasParent.clientWidth, 3)
+let neutralBox1 = new NeutralBox(1, 0.06 * canvasParent.clientWidth, 3);
+let neutralBox2 = new NeutralBox(2, 0.045 * canvasParent.clientWidth, 3);
+let neutralBox3 = new NeutralBox(3, 0.025 * canvasParent.clientWidth, 3);
 
 class Player {
   constructor() {
     this.speedX = 0;
     this.speedY = 0;
+    this.offsetX = 0;
+    this.offsetY = 0;
     this.acceleration = 0.3;
+    this.isJumping = false;
+    this.isColliding = false;
   }
 
   get x1() {
-    return 0
+    return 0 + this.offsetX;
   }
 
   get y1() {
-  return (canvasParent.clientHeight - groundStone1.height) - (canvasParent.clientHeight/3) ;
+    return (
+      canvasParent.clientHeight -
+      groundStone1.height -
+      canvasParent.clientHeight / 3 +
+      this.offsetY
+    );
   }
-  
+
   get x2() {
-    return canvasParent.clientWidth / 10
+    return canvasParent.clientWidth / 10 + this.offsetX;
   }
 
   get y2() {
-    return canvasParent.clientHeight - groundStone1.height
+    return canvasParent.clientHeight - groundStone1.height + this.offsetY;
   }
 
   get width() {
@@ -167,69 +187,74 @@ class Player {
     image(flashS, this.x1, this.y1, this.width, this.height);
   }
 
-  isInCanvas() {
-    let turnRight;
-    let turnLeft;
+  isIn(x1, x2) {
+    return (this.x1 >= x1 && this.x2 <= x2)
 
-    if (this.x2 <= canvasParent.clientWidth) turnRight = true;
-    else turnRight = false;
-
-    if (this.x1 >= 0) turnLeft = true;
-    else turnLeft = false;
-  
-    return turnLeft && turnRight ? true : false;
   }
 
-  // isOnGround() {
+  isInCanvas() {
+    return this.isIn(0, canvasParent.clientWidth)
+  }
+
+  isOnGround() {
+    if (this.y2 === groundStone1.y1) return true;
+    else false;
+  }
+
+  collidesWith(box) {
+    console.log(this.y1, box.y2)
+    return (this.y1 >= box.y2 && this.isIn(box.x1, box.x2))
+  }
+
+  collide() {
+    this.isColliding = (this.collidesWith(neutralBox1) || this.collidesWith(neutralBox2) || this.collidesWith(neutralBox3))
+  }
+
+
+  move() {
+
+    if (this.isInCanvas()) {
+      
+      if (keyIsDown(LEFT_ARROW)) {
+        this.speedX -= this.acceleration;
+      } 
+      if (keyIsDown(RIGHT_ARROW)) {
+        this.speedX += this.acceleration;
+      } 
+     } else {
+       if (this.x1 < 0) {
+         this.offsetX = 0;
+       } else {
+         this.offsetX = canvasParent.clientWidth - this.width;
+       }
+     }
+
+    if (!keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW)) {
+      this.speedX = 0
+    }
+
+
+    if (((this.isOnGround() && !this.isJumping) || this.isJumping) && keyIsDown(UP_ARROW) && !this.isColliding) {
+      this.isJumping = true;
+      this.speedY -= this.acceleration;
+    } else {
+      this.isJumping = false;
+      this.speedY += this.acceleration;
+    }
     
-  //   this.y2 += 10
-
-  //   if(this.y2 === groundStone1.y1) {
-  //     this.y2 -= 10;
-  //     return true;
-  //   } else false;
-
-  // }
-
-  // isCollidingBox() {
-
-  //   this.y1 += 10
-
-  //   if(this.y1 <= neutralBox1.y1) {
-  //     this.y1 -=10;
-  //     return true
-  //   } else false
-  // }
-
-//   move() {
-
-//     if (this.isInCanvas() && keyIsDown(LEFT_ARROW)) {
-//       this.speedX -= this.acceleration;
-//     }
-//     if (keyIsDown(RIGHT_ARROW)) {
-//       this.speedX += this.acceleration;
-//     }
-//     if (keyIsDown(UP_ARROW)) {
-//       this.speedY -= this.acceleration;
-//     }
-//     if (keyIsDown(DOWN_ARROW)) {
-//       this.speedY += this.acceleration;
-//     }
-//   function keyPressed() {
-//     if ( && keyCode === LEFT_ARROW) {
-//           this.x1 -= 10;
-//     } else if (this.isInCanvas() && keyCode === RIGHT_ARROW) {
-//           this.x1 += 10;   
-//     } else if (this.isOnGround() && (keyCode === UP_ARROW || keyCode === 32)) {
-//           this.y2 += 200;   
-//     }
-//   }
-//     return keyPressed();
+    this.offsetX += this.speedX;
+    this.offsetY += this.speedY;       
+    
+    if (this.offsetY > 0) {
+      this.speedY = 0;
+      this.offsetY = 0;
+    }
+  }
 }
 
 let flash = new Player();
 
-console.log(flash.isInCanvas())
+console.log(flash.isOnGround());
 
 window.onresize = () => {
   windowResized;
@@ -253,8 +278,9 @@ function draw() {
   neutralBox2.draw();
   neutralBox3.draw();
 
+  flash.collide();
+  flash.move();
   flash.draw();
-
 }
 
 //Here are "EventListener"
