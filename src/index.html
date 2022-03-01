@@ -22,7 +22,7 @@
         <div class="bg-image-container"></div>
 
         <!-- Here starts the "start page" -->
-        <div  class="hidden" id="start-page">
+        <div class="hidden"  id="start-page">
             <img class="start-image" src="/images/First-page-bg.png"
                 alt="Blue starter page picture with the Title 'Clara S. Smith'.">
             <div class="contents">
@@ -57,7 +57,7 @@
 
 
         <!-- Here starts the "game page" -->
-        <div class="hidden" id="game-page">
+        <div  id="game-page">
             <img class="start-image" src="/images/Bg-Game.png" alt="Blue background">
             <div class="contents">
                 <div class="question-field">
@@ -74,9 +74,9 @@
                         alt="Clara with a happy expression">
                     <div class="status-and-score">
                         <div class="status">
-                            <h2 class="sad-status hidden">"Mhhh... I still don't understand it."</h2>
+                            <h2 class="sad-status">"Mhhh... I still don't understand it."</h2>
                             <h2 class="stunned-status hidden">"Ohhhhhhhh... That's how it works!"</h2>
-                            <h2 class="happy-status">"Now I get it! <br> I think CSS is my best friend now!"</h2>
+                            <h2 class="happy-status hidden">"Now I get it! <br> I think CSS is my best friend now!"</h2>
                         </div>
 
                         <div class="total-points">
@@ -88,7 +88,7 @@
 
                 <hr>
                 <div class="canvas-field">
-                    <div class="canvas-container"></div>
+                    <div id="canvas-container"></div>
                 </div>
 
             </div>
@@ -101,7 +101,7 @@
 
     <!-- Here starts the "game over page" -->
     <div id="game-over-page"></div>
-    <div  id="start-page">
+    <div class="hidden" id="start-page">
         <img class="start-image" src="/images/Bg-game-over.png"
             alt="Blue starter page picture.">
         <div class="contents">
@@ -134,7 +134,7 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
     <script src="/scripts/help-css.js"></script>
 </body>
 
