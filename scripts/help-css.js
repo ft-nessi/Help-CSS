@@ -167,31 +167,18 @@ class Player {
     image(flashS, this.x1, this.y1, this.width, this.height);
   }
 
-  // isInCanvas() {
-  //   let turnRight;
-  //   let turnLeft
-  //   this.x1 += 10;
+  isInCanvas() {
+    let turnRight;
+    let turnLeft;
 
-  //   if (this.x2 <= canvasParent.clientWidth) {
-  //     this.x1 -= 10;
-  //     turnRight = true;
-  //   } else {
-  //     this.x1 -= 10;
-  //     turnRight = false;
-  //   }
+    if (this.x2 <= canvasParent.clientWidth) turnRight = true;
+    else turnRight = false;
 
-  //   this.x1 -= 10;
-
-  //   if (this.x1 >= 0) {
-  //     this.x1 += 10;
-  //     turnLeft = true;
-  //   } else {
-  //     this.x1 += 10;
-  //     turnLeft = false;
-  //   }
-
-  //   return turnLeft && turnRight ? true : false;
-  // }
+    if (this.x1 >= 0) turnLeft = true;
+    else turnLeft = false;
+  
+    return turnLeft && turnRight ? true : false;
+  }
 
   // isOnGround() {
     
@@ -241,6 +228,8 @@ class Player {
 }
 
 let flash = new Player();
+
+console.log(flash.isInCanvas())
 
 window.onresize = () => {
   windowResized;
