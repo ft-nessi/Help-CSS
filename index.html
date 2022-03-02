@@ -22,7 +22,7 @@
         <div class="bg-image-container"></div>
 
         <!-- Here starts the "start page" -->
-        <div class="hidden"  id="start-page">
+        <div class="hidden" id="start-page">
             <img class="start-image" src="/images/First-page-bg.png"
                 alt="Blue starter page picture with the Title 'Clara S. Smith'.">
             <div class="contents">
@@ -57,7 +57,7 @@
 
 
         <!-- Here starts the "game page" -->
-        <div  id="game-page">
+        <div id="game-page">
             <img class="start-image" src="/images/Bg-Game.png" alt="Blue background">
             <div class="contents">
                 <div class="question-field">
@@ -65,22 +65,38 @@
                 </div>
                 <div id="monitor">
                     <img class="image-monitor1" src="/images/monitor-drawing.png" alt="Drawing of the monitor">
+                    <div id="level-0" class="level hidden">div with green border css:detect right css</div>
+                    <div id="level-1" class="level hidden">div with green border but the border on the top is dashed and
+                        thicker</div>
+                    <div id="level-2" class="level hidden">div with green border but the border on the top and on the
+                        right have points and are thicker </div>
+
                 </div>
                 <div id="clara-game">
-                    <img class="image-sad-clara" src="/images/Clara_sad.png" alt="Clara with a sad expression">
-                    <img class="image-stunned-clara hidden" src="/images/Clara_slowly_understanding.png"
+                    <img id="clara-image-0" class="clara-image image-sad-clara" src="/images/Clara_sad.png"
+                        alt="Clara with a sad expression">
+                    <img id="clara-image-1" class="clara-image hidden" src="/images/Clara_slowly_understanding.png"
                         alt="Clara with a stunned expression">
-                    <img class="image-happy-clara hidden" src="/images/Clara_slowly_understanding.png"
+                    <img id="clara-image-2" class="clara-image hidden" src="/images/Clara_slowly_understanding.png"
+                        alt="Clara with a happy expression">
+                    <img id="clara-image-3" class="clara-image hidden" src="/images/Clara_heart.png"
                         alt="Clara with a happy expression">
                     <div class="status-and-score">
                         <div class="status">
-                            <h2 class="sad-status">"Mhhh... I still don't understand it."</h2>
-                            <h2 class="stunned-status hidden">"Ohhhhhhhh... That's how it works!"</h2>
-                            <h2 class="happy-status hidden">"Now I get it! <br> I think CSS is my best friend now!"</h2>
+                            <h2 id="status-0" class="status">"Mhhh... I still don't understand it."</h2>
+                            <h2 id="status-1" class="status hidden">"Ohhhhhhhh... That's how it works!"</h2>
+                            <h2 id="status-2" class="status hidden">"Now I get it! <br> I think CSS is my best friend
+                                now!"</h2>
                         </div>
 
                         <div class="total-points">
-                            <h2> Total points: <span>0</span></h2>
+                            <div class="score">
+                                <h2> TOTAL SCORE: <span id="score-number">0</span></h2>
+                            </div>
+                            <div class="actions">
+                                <span class="action wrong-answer hidden">WHOOPS...THAT'S WRONG.</span>
+                                <button class="action nextLevel hidden">NEXT</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,8 +118,7 @@
     <!-- Here starts the "game over page" -->
     <div id="game-over-page"></div>
     <div class="hidden" id="start-page">
-        <img class="start-image" src="/images/Bg-game-over.png"
-            alt="Blue starter page picture.">
+        <img class="start-image" src="/images/Bg-game-over.png" alt="Blue starter page picture.">
         <div class="contents">
             <div class="header-game-over">
                 <h1>GAME OVER!</h1>
@@ -113,7 +128,8 @@
             </div>
             <div class="clara-status">
                 <h3>CLARA'S FINAL STATUS WAS:<br> <br>
-                <span>Now I get it! <br> I think CSS is my best friend now!"</span></h3>
+                    <span>Now I get it! <br> I think CSS is my best friend now!"</span>
+                </h3>
             </div>
             <div class="boxes">
                 <img class="image-boxes" src="/images/Blocks-first-page.png" alt="Pictures of right and wrong boxes.">
