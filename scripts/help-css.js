@@ -112,7 +112,7 @@ class Box {
   }
 
   get y2() {
-    return this.y1 - this.height;
+    return this.y1 + this.height;
   }
 
   get x2() {
@@ -202,8 +202,7 @@ class Player {
   }
 
   collidesWith(box) {
-    console.log(this.y1, box.y2)
-    return (this.y1 >= box.y2 && this.isIn(box.x1, box.x2))
+    return (this.y1 <= box.y2 && this.isIn(box.x1, box.x2))
   }
 
   collide() {
