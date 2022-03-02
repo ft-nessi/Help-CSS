@@ -108,7 +108,7 @@ class Box {
   }
 
   get y1() {
-    return canvasParent.clientHeight / 10;
+    return canvasParent.clientHeight / 12;
   }
 
   get y2() {
@@ -139,9 +139,10 @@ class NeutralBox extends Box {
   }
 }
 
-let neutralBox1 = new NeutralBox(1, 0.06 * canvasParent.clientWidth, 3);
-let neutralBox2 = new NeutralBox(2, 0.045 * canvasParent.clientWidth, 3);
-let neutralBox3 = new NeutralBox(3, 0.025 * canvasParent.clientWidth, 3);
+let neutralBox1 = new NeutralBox(1, canvasParent.clientWidth/9, 2);
+let neutralBox2 = new NeutralBox(2, 0.055 * canvasParent.clientWidth, 2);
+
+console.log("0", neutralBox1.x1, neutralBox1.x2, neutralBox2.x1, neutralBox2.x2, canvasParent.clientWidth)
 
 class Player {
   constructor() {
@@ -162,13 +163,13 @@ class Player {
     return (
       canvasParent.clientHeight -
       groundStone1.height -
-      canvasParent.clientHeight / 3 +
+      canvasParent.clientHeight / 5 +
       this.offsetY
     );
   }
 
   get x2() {
-    return canvasParent.clientWidth / 10 + this.offsetX;
+    return canvasParent.clientWidth / 14 + this.offsetX;
   }
 
   get y2() {
@@ -188,7 +189,7 @@ class Player {
   }
 
   isIn(x1, x2) {
-    return (this.x1 >= x1 && this.x2 <= x2)
+    return ((this.x1 >= x1 && this.x2 <= x2) || (this.x1 <= x2 && this.x2 >= x1))
 
   }
 
@@ -206,7 +207,7 @@ class Player {
   }
 
   collide() {
-    this.isColliding = (this.collidesWith(neutralBox1) || this.collidesWith(neutralBox2) || this.collidesWith(neutralBox3))
+    this.isColliding = (this.collidesWith(neutralBox1) || this.collidesWith(neutralBox2))
   }
 
 
@@ -236,9 +237,15 @@ class Player {
     if (((this.isOnGround() && !this.isJumping) || this.isJumping) && keyIsDown(UP_ARROW) && !this.isColliding) {
       this.isJumping = true;
       this.speedY -= this.acceleration;
+      console.log(this.offsetY);
     } else {
       this.isJumping = false;
       this.speedY += this.acceleration;
+
+      if (this.isColliding) {
+        this.speedY = 0;
+        this.speedY += this.acceleration;
+      }
     }
     
     this.offsetX += this.speedX;
@@ -275,7 +282,6 @@ function draw() {
 
   neutralBox1.draw();
   neutralBox2.draw();
-  neutralBox3.draw();
 
   flash.collide();
   flash.move();
