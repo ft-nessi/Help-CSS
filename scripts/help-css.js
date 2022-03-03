@@ -272,7 +272,10 @@ class NeutralBox extends Box {
 
     image(this.image, this.x1, this.y1, this.width, this.height);
     textSize(this.width/10);
-    text(textString, this.x1 + 10, this.y1 + 10, this.width - 10, this.height - 10);
+    text(textString, this.x1 + 5, this.y1 + 8, this.width - 10, this.height - 10);
+    fill(36, 53, 65);
+    textStyle(BOLD);
+    textAlign(CENTER);
   }
 }
 

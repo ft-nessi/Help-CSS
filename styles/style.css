@@ -217,14 +217,14 @@ body {
   height: 20vh;
   align-self: flex-end;
   padding-top: 10vh;
-  padding-right: 2vh;
+  padding-left: 2.5vh;
 }
 
 .status-and-score {
   align-items: flex-start;
 }
 
-.status-and-score .status > h2 {
+.status-and-score .status-score > h2 {
   align-self: flex-start;
   font-size: 2.5vh;
   line-height: 3vh;
@@ -239,7 +239,6 @@ body {
   line-height: 0.1vh;
   color: rgb(237, 37, 78);
   padding-right: 4vh;
-  padding-bottom: 1vh;
 }
 
 hr {
@@ -258,6 +257,29 @@ hr {
   height: 88%;
   width: 97%;
   padding-top: 0.5vh;
+}
+
+.nextLevel {
+  height: 2%;
+  border: 0.5vh solid rgb(16, 61, 102);
+  background-color: rgb(130, 179, 208);
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 2.5vh;
+  text-align: center;
+  color: rgb(16, 61, 102);
+}
+
+.nextLevel:hover {
+  border: 0.5vh solid rgb(237, 37, 78);
+  background-color: rgb(255, 123, 150);
+  color: rgb(237, 37, 78);
+}
+
+.nextLevel:active {
+  border: 0.5vh solid rgb(237, 37, 78);
+  background-color: rgb(255, 123, 150);
+  color: rgb(237, 37, 78);
+  transform: translateY(1vh);
 }
 
 /* The Style of the game over page starts here */
