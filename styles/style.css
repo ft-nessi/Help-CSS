@@ -11,7 +11,7 @@ body {
 }
 
 .bg-image-container {
-  background-image: url("/images/Bg-boxes.png");
+  background-image: url("images/Bg-boxes.png");
   background-color: rgb(208, 220, 227);
   height: 100vh;
   background-size: cover;
