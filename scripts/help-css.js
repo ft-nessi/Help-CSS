@@ -115,12 +115,12 @@ function mySetup() {
 
 function preload() {
   //Loading images
-  ground = loadImage("../images/ground-stone.png");
-  neutralB = loadImage("../images/neutral-stone.png");
-  rightB = loadImage("../images/right-stone.png");
-  wrongB = loadImage("../images/wrong-stone.png");
-  flashS = loadImage("../images/flash-standing.png");
-  flashR = loadImage("../images/flash-running.png");
+  ground = loadImage("images/ground-stone.png");
+  neutralB = loadImage("images/neutral-stone.png");
+  rightB = loadImage("images/right-stone.png");
+  wrongB = loadImage("images/wrong-stone.png");
+  flashS = loadImage("images/flash-standing.png");
+  flashR = loadImage("images/flash-running.png");
 }
 
 function windowResized() {

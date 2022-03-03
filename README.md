@@ -13,17 +13,3 @@ The more right boxes you hit the higher your score gets and the more I understan
 With the left arrow you run to the left side, with the right arrow you run to the right side and with the up arrow or with the spacebar you can jump up high to hit the right solution box.
 
 PLEASE!!! Mr. Flash I beg you to help me. 
-
-## TO DO
-
-- HTML DOM + CSS (first intro page)
-- HTML DOM + CSS (second game page)
-- HTML DOM + CSS (third intro page)
-- Javascript Canvas
-- Background and Ground
-- Box Classes
-- Right and Wrong Box Classes 
-- Player Class
-- Questions
-- right and wrong Answers
-- Arrays with objects 
