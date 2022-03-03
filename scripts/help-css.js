@@ -24,8 +24,6 @@ let neutralB;
 let rightB;
 let wrongB;
 let flashS;
-let flashR;
-
 
 function startLevel() {
   const actionElements = document.querySelectorAll(".action");
@@ -122,7 +120,6 @@ function preload() {
   rightB = loadImage("images/right-stone.png");
   wrongB = loadImage("images/wrong-stone.png");
   flashS = loadImage("images/flash-standing.png");
-  flashR = loadImage("images/flash-running.png");
 }
 
 function windowResized() {
@@ -298,7 +295,8 @@ class Player {
     this.acceleration = 0.3;
     this.isJumping = false;
     this.isCollidingVert = false;
-    this.isCollidingHor = false;
+    this.isCollidingHorRight = false;
+    this.isCollidingHorLeft = false;
   }
 
   get x1() {
@@ -355,29 +353,43 @@ class Player {
     return this.y1 <= box.y2 && this.isIn(box.x1, box.x2);
   }
 
-  collidesWithHor(box) {
+  collidesWithHorLeft(box) {
+     if(this.x2 >= box.x2) { 
+       return (this.x1 <= box.x2 &&
+         this.isInBetween(box.y1, box.y2)
+       );
+    }
+    return false;
+  }
+
+  collidesWithHorRight(box) {
+    if (this.x2 >= box.x1) {
     return (
-      this.x2 >= box.x1 &&
-      this.isInBetween(box.y1, box.y2) &&
-      this.x1 <= box.x2 &&
+      this.x1 <= box.x1 &&
       this.isInBetween(box.y1, box.y2)
     );
+    }
+    return false;
   }
 
   collideVert() {
     this.isCollidingVert =
       this.collidesWithVert(neutralBox1) || this.collidesWithVert(neutralBox2);
+
   }
 
   collideHor() {
-    this.isCollidingHor =
-      this.collidesWithHor(neutralBox1) || this.collidesWithHor(neutralBox2);
+    this.isCollidingHorRight =
+      this.collidesWithHorRight(neutralBox1) || this.collidesWithHorRight(neutralBox2);
+      this.isCollidingHorLeft =
+      this.collidesWithHorLeft(neutralBox1) || this.collidesWithHorLeft(neutralBox2);
   }
 
   isPressing(key) {
     if (!Game.canMove) {
       return false;
     }
+
     return keyIsDown(key);
   }
 
@@ -401,12 +413,12 @@ class Player {
       this.speedX = 0;
     }
 
-    if (this.isCollidingHor) {
+    if (this.isCollidingHorRight || this.isCollidingHorLeft) {
       this.speedX = 0;
-      if (this.isPressing(RIGHT_ARROW)) {
+      if (this.isPressing(RIGHT_ARROW) && this.isCollidingHorLeft) {
         this.speedX += this.acceleration;
       }
-      if (this.isPressing(LEFT_ARROW)) {
+      if (this.isPressing(LEFT_ARROW) && this.isCollidingHorRight) {
         this.speedX -= this.acceleration;
       }
     }
@@ -424,8 +436,9 @@ class Player {
 
       if (this.isCollidingVert) {
         this.speedY = 0;
-        this.speedY += this.acceleration;
+        this.speedY += this.acceleration * 8;
       }
+
     }
 
     this.offsetX += this.speedX;
@@ -435,6 +448,13 @@ class Player {
       this.speedY = 0;
       this.offsetY = 0;
     }
+
+    if (this.offsetY <= -(canvasParent.clientHeight * 0.9 - neutralBox1.height)) {
+      this.isJumping = false
+      this.speedY = 0;
+      this.offsetY = -(canvasParent.clientHeight* 0.9 - neutralBox1.height);
+    }
+   
   }
 }
 
