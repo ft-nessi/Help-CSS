@@ -168,12 +168,43 @@ body {
 #monitor {
   height: 40vh;
   align-items: baseline;
+  position: relative;
 }
 
 .image-monitor1 {
   height: 25vh;
-  padding-left: 16vh;
-  padding-top: 2vh;
+  position: absolute;
+  padding-left: 20vh;
+}
+
+.question-box {
+  height: 19vh;
+  position: absolute;
+  width: 36vh;
+  transform: translate(10vh, 0);
+}
+
+.level {
+  position: absolute;
+  right: 3vh;
+  left: 3vh;
+  bottom: 3vh;
+  top: 3vh;
+}
+
+#level-0 {
+  border: 5px solid green;
+}
+
+#level-1 {
+  border: 5px solid green;
+  border-top: 10px dashed green;
+}
+
+#level-2 {
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 5vh;
 }
 
 #clara-game {
@@ -182,7 +213,7 @@ body {
   padding: 0;
 }
 
-.image-sad-clara {
+.clara-image {
   height: 20vh;
   align-self: flex-end;
   padding-top: 10vh;
@@ -198,11 +229,12 @@ body {
   font-size: 2.5vh;
   line-height: 3vh;
   color: rgb(36, 53, 65);
-  padding-bottom: 1vh;
+  padding-top: 4vh;
+  padding-bottom: 0vh;
   padding-right: 4vh;
 }
 
-.status-and-score .total-points > h2 {
+.status-and-score .score > h2 {
   font-size: 3vh;
   line-height: 0.1vh;
   color: rgb(237, 37, 78);

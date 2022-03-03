@@ -3,20 +3,14 @@ const canvasParent = document.querySelector("#canvas-container");
 const startPageElement = document.querySelector("#start-page");
 const gamePageElement = document.querySelector("#game-page");
 const gameOverPageElement = document.querySelector("#game-over-page");
-
-let ground;
-let neutralB;
-let rightB;
-let wrongB;
-let flashS;
-let flashR;
-
 const Game = {
+  hasStarted: false,
   currentLevel: 0,
   levels: [
-    { correct: 1, answers: ["border-color: red", "border-color: green"] },
-    { correct: 1, answers: ["border-color: red", "border-color: green"] },
-    { correct: 1, answers: ["border-color: red", "border-color: green"] },
+    { correct: 1, answers: ["border: green", "border: 5px solid green"] },
+    { correct: 0, answers: ["border: 5px solid green; border-top: 10px dashed green;", "border: 5px solid green; border-top: double dashed"] },
+    { correct: 1, answers: ["font-style: italic, underline;", "font-style: italic; text-decoration: underline;"] },
+    { correct: 0, answers: [""] },
   ],
   isResetting: false,
   canMove: false,
@@ -24,6 +18,13 @@ const Game = {
   hasAnswered: false,
   hasUpdatedScore: false,
 };
+
+let ground;
+let neutralB;
+let rightB;
+let wrongB;
+let flashS;
+let flashR;
 
 function startLevel() {
   const actionElements = document.querySelectorAll(".action");
@@ -42,6 +43,10 @@ function startLevel() {
 }
 
 function updateScore(isCorrect) {
+  if (!Game.hasStarted) {
+    return;
+  }
+
   const scoreElement = document.querySelector("#score-number");
   Game.totalScore = Game.totalScore + (isCorrect ? 1 : 0);
   scoreElement.innerText = Game.totalScore;
@@ -61,7 +66,7 @@ function updateScore(isCorrect) {
     elem.classList.add("hidden");
   });
 
-  const statusElement = document.querySelector(`#status-${Game.totalScore}`);
+  const statusElement = document.querySelector(`#status-${Game.currentLevel}`);
   statusElement.classList.remove("hidden");
 
   const actionElements = document.querySelectorAll(".action");
@@ -80,17 +85,17 @@ function updateScore(isCorrect) {
 
 // Basis functions
 function hidePage(name) {
-  name.style.display = "none";
+  name.classList.add("hidden");
 }
 
 function showPage(name) {
-  name.style.display = "flex";
+  name.classList.remove("hidden");
 }
 // ______________________________________________________________
 //  Here starts the Canvas
 // --------------------------------------------------------------
 
-function setup() {
+function mySetup() {
   //BackgroundColor
   const c = color(208, 220, 227);
 
@@ -200,6 +205,7 @@ class Box {
 class NeutralBox extends Box {
   constructor(order, spaceLeft, totalBoxesInRow) {
     super(order, spaceLeft, totalBoxesInRow);
+    this.image = neutralB;
   }
   isIn(x1, x2) {
     return (this.x1 >= x1 && this.x2 <= x2) || (this.x1 <= x2 && this.x2 >= x1);
@@ -258,20 +264,25 @@ class NeutralBox extends Box {
     let textString = Game.levels[Game.currentLevel].answers[this.order - 1];
     if (Game.hasAnswered) {
       if (isThisCorrect) {
-        textString = "YEAH " + textString;
+        this.image = rightB;
       } else {
-        textString = "NO " + textString;
+        this.image = wrongB;
       }
-    }
+    } else {this.image = neutralB}
 
-    image(neutralB, this.x1, this.y1, this.width, this.height);
-    textSize(10);
-    text(textString, this.x1 + 5, this.y1 + 5, this.width - 5, this.height - 5);
+    image(this.image, this.x1, this.y1, this.width, this.height);
+    textSize(this.width/10);
+    text(textString, this.x1 + 10, this.y1 + 10, this.width - 10, this.height - 10);
   }
 }
 
-let neutralBox1 = new NeutralBox(1, canvasParent.clientWidth / 9, 2);
-let neutralBox2 = new NeutralBox(2, 0.055 * canvasParent.clientWidth, 2);
+let neutralBox1;
+let neutralBox2;
+
+function createBoxes() {
+  neutralBox1 = new NeutralBox(1, canvasParent.clientWidth / 9, 2);
+  neutralBox2 = new NeutralBox(2, 0.055 * canvasParent.clientWidth, 2);
+}
 
 class Player {
   constructor() {
@@ -424,10 +435,8 @@ class Player {
 
 let flash = new Player();
 
-console.log(flash.isOnGround());
-
 window.onresize = () => {
-  windowResized;
+  windowResized();
 };
 
 //_______________________________________________________________
@@ -435,6 +444,10 @@ window.onresize = () => {
 // --------------------------------------------------------------
 
 function draw() {
+  if (!Game.hasStarted) {
+    return;
+  }
+
   background(208, 220, 227);
 
   groundStone1.draw();
@@ -464,12 +477,26 @@ function draw() {
 document.getElementById("start-button").onclick = () => {
   hidePage(startPageElement);
   showPage(gamePageElement);
+  Game.hasStarted = true;
+  createBoxes();
+  mySetup();
 };
 
 document.querySelector(".nextLevel").onclick = () => {
+  if (Game.currentLevel === 2) {
+    Game.hasStarted = false;
+    hidePage(gamePageElement);
+    showPage(gameOverPageElement);
+    return;
+  }
+
   Game.currentLevel++;
   startLevel();
 };
+
+document.querySelector("#try-again-button").onclick = () => {
+  window.location.reload();
+}
 
 window.addEventListener("onload", () => {
   hidePage(gamePageElement);
