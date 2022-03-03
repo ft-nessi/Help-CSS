@@ -6,6 +6,10 @@ body {
   font-family: "Balsamiq Sans", cursive;
 }
 
+main {
+  display: none;
+}
+
 #background-page {
   position: relative;
 }

@@ -26,6 +26,7 @@ let wrongB;
 let flashS;
 let flashR;
 
+
 function startLevel() {
   const actionElements = document.querySelectorAll(".action");
   actionElements.forEach((elem) => {
@@ -114,6 +115,7 @@ function mySetup() {
 }
 
 function preload() {
+
   //Loading images
   ground = loadImage("images/ground-stone.png");
   neutralB = loadImage("images/neutral-stone.png");
